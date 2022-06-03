@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Contact Manager</title>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="text/javascript">
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          readCookie();
+        },
+        false
+      );
+    </script>
+  </head>
+  <body>
+    <!--<h1 id="title">Contact Manager</h1>-->
+    <center>Contact Manager</center>
+
+    <!--does log out-->
+    <div id="loggedInDiv">
+      <span id="userName"></span><br />
+      <button
+        type="button"
+        id="logoutButton"
+        class="buttons"
+        onclick="doLogout();"
+      >
+        Log Out
+      </button>
+    </div>
+
+    <!--does search for contact, add contact, need to add update contact, and delete contact-->
+    <div id="accessUIDiv">
+      <!--NEED TO FIX-->
+      <!--delete text field to add contact and just leave button-->
+      <!--once user clicks on button, use javascript to go another page/button to add a contact-->
+      <input type="text" id="contactText" placeholder="Contact To Add" />
+      <button
+        type="button"
+        id="addContactButton"
+        class="buttons"
+        onclick="addContact();"
+      >
+        Add Contact</button
+      ><br />
+      <span id="contactAddResult"></span>
+    </div>
+  </body>
+</html>

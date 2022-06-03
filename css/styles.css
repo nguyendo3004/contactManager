@@ -1,0 +1,174 @@
+/*This is the modified CSS style sheet*/
+
+*{/*this is applicable to all styling elements*/
+    margin: 10px;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+
+}
+ 
+
+/*This is for the background and the body text of the html*/
+body
+{
+    min-height: 100vh;
+    width: 100%;
+    background-image: url(../images/bluewaves.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    margin:0;
+
+    
+}
+/*This is for the Contact Manager title*/
+center{
+    font-size: 50px;
+    color: #fff;
+    padding: 0%;
+
+}
+
+
+
+/*This is for the login div*/
+#loginDiv
+{
+    font-size: 30px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: rgb(196, 196, 246);
+    border: 5px red;
+    border-radius: 30px;
+}
+
+label{
+    text-align: center;
+}
+
+/*This is where you can log out*/
+#loggedInDiv
+{
+    font-size: 15px;
+    width: 50%;
+    margin-left: 70%;
+    
+    /*background-color: rgb(196, 196, 246);*/
+    
+}
+
+/*This is where you can seach the contact*/
+#accessUIDiv
+{
+    font-size: 20px;
+    width: 70%;
+    margin-left: 15%;
+    padding: 25px;
+    background-color: rgb(196, 196, 246);
+}
+
+.buttons
+{
+    font-size: 20px;
+    border-radius: 25px;
+    width: 50%;
+    margin-left: 25%;
+    f
+}
+
+.buttons:hover{
+    background-color: #00d5124f;
+    color: #FFFFFF;
+    opacity: 50%;
+}
+
+#loginName
+{
+	font-size: 30px;
+}
+#loginPassword
+{
+	font-size: 30px;
+}
+#searchText
+{
+	font-size: 20px;
+}
+#contactText
+{
+	font-size: 20px;
+}
+
+.doButtons{
+    /*making the buttons be side by side*/
+    display: inline;
+}
+
+input[type="text"],input[type="password"]{
+    border-radius: 25px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    
+}
+
+#inner-title{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    
+    color: #95060a;
+}
+
+#loginResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    
+    color: #95060a;
+}
+
+#userName{
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+/*This is the log out button*/
+#logoutButton{
+    width: 20%;
+    margin-left: 40%;
+}
+
+select{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 2%;
+    font-size: 0.75em;
+    
+}
+
+#contactSearchResult{
+    display: none;
+}
+
+#contactAddResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    
+    color: #95060a;
+}
