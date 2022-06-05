@@ -1,7 +1,7 @@
 <?php
 	$inData = getRequestInfo();
 
-	$CurrentPhone = $inData["CurrentPhone"];
+	$TableID = $inData["ContactID"];
 	$UserID = $inData["UserID"];
 
     $NewFirstName = $inData["NewFirstName"];
@@ -21,7 +21,7 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET FirstName='".$NewFirstName."', LastName='".$NewLastName."',Phone='".$NewPhone."',Email='".$NewEmail."',Address='".$NewAddress."',Notes='".$NewNotes."' WHERE (Phone='".$CurrentPhone."' and UserID='".$UserID."')");
+		$stmt = $conn->prepare("UPDATE Contacts SET FirstName='".$NewFirstName."', LastName='".$NewLastName."',Phone='".$NewPhone."',Email='".$NewEmail."',Address='".$NewAddress."',Notes='".$NewNotes."' WHERE ID='".$TableID."'");
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();

@@ -2,7 +2,7 @@
 
     $inData = getRequestInfo();
 
-    $Phone = $inData["Phone"];
+    $TableID = $inData["ContactID"];
 	$UserID = $inData["UserID"];
 	
     //connects to database
@@ -15,7 +15,7 @@
     //successful connection test
     else
     {
-        $stmt = $conn->prepare("DELETE FROM Contacts where UserID='".$UserID."' and Phone='".$Phone."'");
+        $stmt = $conn->prepare("DELETE FROM Contacts where ID='".$TableID."'");
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
