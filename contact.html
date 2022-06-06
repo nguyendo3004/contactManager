@@ -27,6 +27,7 @@
     <!--does log out-->
     <div id="loggedInDiv">
       <span id="userName"></span><br />
+
       <button
         type="button"
         id="logoutButton"
@@ -51,13 +52,52 @@
         Search Contact</button
       ><br />
       <span id="contactSearchResult"></span>
-      <p id="contactList"></p>
+      <!--<p id="contactList"></p>-->
+      <!--<button id="contactListTest"></button>-->
+      <ul id="contactListTest"></ul>
       <br /><br />
+
+      <!--To update contact dummy code-->
+
+      <input
+        type="text"
+        id="firstNametoUpdate"
+        placeholder="First Name of Contact To update"
+      />
+      <span id="contactUpdateResult"></span>
+      <br /><br />
+
+      <button
+        type="button"
+        id="updateContactButton"
+        class="buttons"
+        onclick="updateContact();"
+      >
+        update Contact
+      </button>
 
       <!--NEED TO FIX-->
       <!--delete text field to add contact and just leave button-->
       <!--once user clicks on button, use javascript to go another page/button to add a contact-->
-      <input type="text" id="contactText" placeholder="Contact To Add" />
+      <input
+        type="text"
+        id="firstName"
+        placeholder="First Name of Contact To Add"
+      />
+      <input
+        type="text"
+        id="lastName"
+        placeholder="Last Name of Contact To Add"
+      />
+      <input
+        type="text"
+        id="phoneNumber"
+        placeholder="phonenumber of Contact To Add"
+      />
+      <input type="text" id="emailVal" placeholder="email of Contact To Add" />
+      <input type="text" id="address" placeholder="Address of Contact To Add" />
+      <input type="text" id="notes" placeholder="Notes of Contact To Add" />
+
       <button
         type="button"
         id="addContactButton"
@@ -67,6 +107,23 @@
         Add Contact</button
       ><br />
       <span id="contactAddResult"></span>
+
+      <!--Delete Contact-->
+      <input
+        type="text"
+        id="delContactId"
+        placeholder="ID of Contact to Delete"
+      />
+
+      <button
+        type="button"
+        id="DeleteContactButton"
+        class="buttons"
+        onclick="deleteContact();"
+      >
+        Delete Contact</button
+      ><br />
+      <span id="contactDeleteResult"></span>
     </div>
   </body>
 </html>
