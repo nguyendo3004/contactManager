@@ -1,8 +1,8 @@
 <html>
-  <!--This is modded to adjust to our project-->
+  <!--This page works and needs no modification->
   <head>
     <!--this next line helps make the website responsive -->
-    <meta name="viewport" content="with-device-width, inital-scale=1.0" />
+    <meta name="viewport" content="with-device-width, initial-scale=1.0" />
     <title>Contact Manager</title>
 
     <script type="text/javascript" src="js/md5.js"></script>
@@ -20,8 +20,10 @@
     <!--<h1 id="title">Contact Manager</h1> -->
     <center>Contact Manager</center>
     <!--this is the start of the gray block-->
+
+    
     <div id="loginDiv">
-      <span id="inner-title">PLEASE LOG IN</span>
+      <span id="inner-title">Enter your Login information</span>
 
       <label for="username"> <b>Username</b></label>
       <input type="text" id="loginName" placeholder="Username" /><br />
@@ -32,53 +34,23 @@
           type="button"
           id="loginButton"
           class="buttons"
-          onclick="doLogin()"
+          onclick="doLogin();"
         >
           Login
         </button>
         <span id="loginResult"></span>
 
+       
         <button
           type="button"
-          id="createUserButton"
+          id="createAccountButton"
           class="buttons"
-          onclick="doCreateUser()"
-        >
-          Create New Account
-        </button>
-        <!-- <span id="loginResult"></span>-->
+          onclick="window.location.href = 'newAccount.html'"
+        > Create An Account </button>
+        <span id="newAccountResult"></span>
+      </body>
+
       </div>
-
-      <!---
-      <form>
-        <div id="loginDiv1">
-          <label>Username: </label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="username"
-            required
-          />
-          <label>Password: </label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            required
-          />
-          <button
-            type="submit"
-            id="loginButton"
-            class="buttons"
-            onclick="doLogin();"
-          >
-            Login
-          </button>
-
-          <input type="checkbox" checked="checked" />Remember Me
-          <button type="button" class="cancelbtn">Cancel</button>
-        </div>
-      </form> -->
     </div>
   </body>
 </html>

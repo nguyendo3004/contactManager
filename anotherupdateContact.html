@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Contact Manager</title>
+    <meta name="viewport" content="with-device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="text/javascript">
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          readCookie();
+        },
+        false
+      );
+    </script>
+    <script type="text/javascript">
+      getUserandContactID();
+    </script>
+  </head>
+  <body>
+    <!--This page creates a new contact for the user-->
+    <center>Contact Manager</center>
+
+    <!--does log out-->
+    <div id="loggedInDiv">
+      <!--<span id="userName"></span><br />-->
+      <button
+        type="button"
+        id="logoutButton"
+        class="buttons"
+        onclick="doLogout();"
+      >
+        Log Out
+      </button>
+    </div>
+
+    <div id="accessUIDiv">
+      <h3>Please Enter Your Contact's Updated Information</h3>
+      <input type="text" id="firstName" placeholder="Contact First Name" />
+      <input type="text" id="lastName" placeholder="Contact Last Name" />
+      <input type="text" id="phoneNumber" placeholder="Contact Phone Number" />
+      <input type="text" id="emailVal" placeholder="Contact Email" />
+      <input type="text" id="address" placeholder="Contact Address" />
+      <input type="text" id="notes" placeholder="Notes" />
+
+      <button
+        type="button"
+        id="updateContactButton"
+        class="buttons"
+        onclick="updateContact();"
+      >
+        Update Contact
+      </button>
+      <button
+        type="button"
+        id="backtoSearch"
+        class="buttons"
+        onclick="window.location.href = 'contact.html'"
+      >
+        Back to Search Page
+      </button>
+      <br />
+      <span id="contactUpdateResult"></span>
+    </div>
+  </body>
+</html>

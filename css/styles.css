@@ -2,8 +2,9 @@
 
 *{/*this is applicable to all styling elements*/
     margin: 10px;
-    padding: 0;
+    /*padding: 0;*/
     font-family: 'Poppins', sans-serif;
+    border-radius: 25px;
 
 }
  
@@ -42,6 +43,10 @@ center{
     border: 5px red;
     border-radius: 30px;
 }
+#contactUpdateResult{
+    display: inline;
+    float: left;
+}
 
 label{
     text-align: center;
@@ -66,7 +71,35 @@ label{
     margin-left: 15%;
     padding: 25px;
     background-color: rgb(196, 196, 246);
+    border-radius: 30px;
 }
+
+/*This affects the area in which the buttons from search appear*/
+#contactListTest{
+    float: left;
+    list-style: none;
+    border-radius: 25px;
+   
+    
+} 
+
+/*This might affect the buttons generated after search*/
+ul{
+    float: left;
+    list-style: none;
+    border-radius: 25px;
+    
+}
+
+/*This might affect the buttons generated after search*/
+#contactResults{
+    float: left;
+    list-style:none; 
+    border-radius: 25px;
+    width: 200px;
+    padding-right: 20px;
+    
+} 
 
 .buttons
 {
@@ -74,7 +107,8 @@ label{
     border-radius: 25px;
     width: 50%;
     margin-left: 25%;
-    f
+    
+    
 }
 
 .buttons:hover{
@@ -135,6 +169,17 @@ input[type="text"],input[type="password"]{
     
     color: #95060a;
 }
+#newAccountResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    
+    color: #95060a;
+
+}
 
 #userName{
     display: inline-block;
@@ -158,7 +203,16 @@ select{
 }
 
 #contactSearchResult{
-    display: none;
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    
+    color: #95060a;
+    
 }
 
 #contactAddResult{

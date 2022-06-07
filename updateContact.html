@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Contact Manager</title>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="text/javascript">
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          readCookie();
+        },
+        false
+      );
+    </script>
+    <!--This gets the contact's info from the URL-->
+    <script type="text/javascript">
+      getContactInfo();
+    </script>
+
+    <!--Enter a script tag that will call a function that will use the new API to get all contact info to edit-->
+  </head>
+  <body>
+    <!--<h1 id="title">Contact Manager</h1>-->
+    <center>Contact Manager</center>
+
+    <!--does log out-->
+    <div id="loggedInDiv">
+      <span id="userName"></span><br />
+
+      <button
+        type="button"
+        id="logoutButton"
+        class="buttons"
+        onclick="doLogout();"
+      >
+        Log Out
+      </button>
+    </div>
+
+    <!--does search for contact, add contact, need to add update contact, and delete contact-->
+    <div id="accessUIDiv">
+      <br />
+
+      <!--To update contact dummy code-->
+
+      <!--Displaying information of the contact-->
+      <span id="contactUpdateResults"></span>
+
+      <ul id="contactUpdateResult"></ul>
+      <br /><br />
+
+      <!--<button
+        type="button"
+        id="updateContactButton"
+        class="buttons"
+        onclick="window.location.href = 'anotherupdateContact.html'"
+      >
+        Update Contact
+      </button>-->
+
+      <!--Delete Contact-->
+
+      <button
+        type="button"
+        id="DeleteContactButton"
+        class="buttons"
+        onclick="deleteContact();"
+      >
+        Delete Contact</button
+      ><br />
+      <span id="contactDeleteResult"></span>
+    </div>
+  </body>
+</html>

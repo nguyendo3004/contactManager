@@ -27,6 +27,7 @@
     <!--does log out-->
     <div id="loggedInDiv">
       <span id="userName"></span><br />
+
       <button
         type="button"
         id="logoutButton"
@@ -51,22 +52,58 @@
         Search Contact</button
       ><br />
       <span id="contactSearchResult"></span>
-      <p id="contactList"></p>
+      <!--<p id="contactList"></p>-->
+      <!--<button id="contactListTest"></button>-->
+      <ul id="contactListTest"></ul>
       <br /><br />
 
-      <!--NEED TO FIX-->
-      <!--delete text field to add contact and just leave button-->
-      <!--once user clicks on button, use javascript to go another page/button to add a contact-->
-      <input type="text" id="contactText" placeholder="Contact To Add" />
+      <!--To update contact dummy code-->
+      <!--
+      <input
+        type="text"
+        id="firstNametoUpdate"
+        placeholder="First Name of Contact To update"
+      />
+      <span id="contactUpdateResult"></span>
+      <br /><br />
+
       <button
         type="button"
-        id="addContactButton"
+        id="updateContactButton"
         class="buttons"
-        onclick="addContact();"
+        onclick="updateContact();"
       >
-        Add Contact</button
+        update Contact
+      </button> -->
+
+      <!--once user clicks on button, use javascript to go another page/button to add a contact-->
+      <button
+        type="button"
+        id="createContactButton"
+        class="buttons"
+        onclick="window.location.href = 'AddContact.html'"
+      >
+        Add Contact
+      </button>
+      <span id="newContactResult"></span>
+
+      <!--Delete Contact-->
+      <!--
+      <input
+        type="text"
+        id="delContactId"
+        placeholder="ID of Contact to Delete"
+      />-->
+
+      <!-- <button
+        type="button"
+        id="DeleteContactButton"
+        class="buttons"
+        onclick="deleteContact();"
+      >
+        Delete Contact</button
       ><br />
-      <span id="contactAddResult"></span>
+      <span id="contactDeleteResult"></span>-->
     </div>
   </body>
 </html>
