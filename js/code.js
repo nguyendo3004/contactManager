@@ -1,6 +1,7 @@
 const urlBase = 'http://contactmanager.site/LAMPAPI';
 const extension = 'php';
 
+
 let userId = 0;
 let firstName = "";
 let lastName = "";
@@ -13,16 +14,6 @@ let contactPhone = "";
 let contactEmail = "";
 let contactAddress = "";
 let contactNotes = "";
-
-//creating an arr of contacts to store results from search
-let contactFNameArr = [];
-let contactLastNameArr= [];
-let contactIDArr = [];
-let contactPhoneArr = [];
-let contactEmailArr = [];
-let contactAddressArr = [];
-let	contactNotesArr = [];
-
 
 
 
@@ -62,7 +53,7 @@ function doLogin()
 				
 				let jsonObject = JSON.parse( xhr.responseText );
 				
-				//might need to change UserID to id
+				
 				userId = jsonObject.UserID;
 				//alert(userId);
 				
@@ -205,7 +196,7 @@ function addContact()
 		Address: Address, Notes: Notes, UserID: userId};
 
 	let jsonPayload = JSON.stringify( tmp );
-	alert(jsonPayload);
+	//alert(jsonPayload);
 	let url = urlBase + '/AddContact.' + extension;
 	
 	let xhr = new XMLHttpRequest();
@@ -221,7 +212,7 @@ function addContact()
 			}
 		};
 		xhr.send(jsonPayload);
-		alert(jsonPayload);
+		//alert(jsonPayload);
 	}
 	catch(err)
 	{
@@ -235,8 +226,8 @@ function searchContact()
 	let srch = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	let contactList = "";
-	let contactListTest = "";// TESTING THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//let contactList = "";
+	let contactListTest = "";// TESTING THIS!!
 
 
 	let tmp = {Search:srch, ID:userId};
@@ -254,68 +245,59 @@ function searchContact()
 	{
 		xhr.onreadystatechange = function() 
 		{
-			//alert("we made it here 1");
+			
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				//alert("we made it here 2");
+				
 				document.getElementById("contactSearchResult").innerHTML = "Here are your contacts related to that search!";
 				let jsonObject = JSON.parse( xhr.responseText );
-				//alert(jsonObject);
-
-				//contactList = jsonObject.results[0].FirstName;
-				//alert(jsonObject.results.length);
 				
-				for( let i=0; i<jsonObject.results.length; i++ )//issue is here
+				
+				for( let i=0; i<jsonObject.results.length; i++ )
 				{
 					
 					
 					//contactListTest += "<button>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</button>";
 					
 					//this line creates a button that displays the first and last name of the contact and takes you to the update contact page
-					contactListTest += '<button type="button" id="contactResults" onclick= \"window.location.href = \'updateContact.html/?contactid='+ contactID + '&firstname='+contactFName+ '\'\"' + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</button>";
-					//now I will store each variable into the arr of different attributes so that once you click a button the 
+					//this line also stores the contactID and userid in the url that will later be parsed in the update contact page
+
+					contactID = jsonObject.results[i].TableID;
 					contactFName = jsonObject.results[i].FirstName;
 					contactLastName= jsonObject.results[i].LastName;
-					contactPhone = jsonObject.results[i].Phone;
-					contactEmail = jsonObject.results[i].Email;
-					contactAddress= jsonObject.results[i].Address;
-					contactNotes = jsonObject.results[i].Notes;
-					contactID = jsonObject.results[i].TableID;
-					// sessionStorage.setItem("contactFName", contactFName );
-					// sessionStorage.setItem("contactLastName", contactLastName );
-					// sessionStorage.setItem("contactPhone", contactPhone );
-					// sessionStorage.setItem("contactEmail", contactEmail );
-					// sessionStorage.setItem("contactAddress", contactAddress );
-					// sessionStorage.setItem("contactNotes", contactNotes );
-					// sessionStorage.setItem("contactID", contactID );
+					//contactAddress = jsonObject.results[i].Address;
+					//contactEmail = jsonObject.resultis[i].Email;
+					//contactPhone = jsonObject.results
 
-					/*Have to store the contact's values when going to the update page then 
-					in the update page display CLICKABLE information about the contact
-					when user clicks on a field and edits a field, we have to send  */
-					// contactList += jsonObject.results[i].FirstName + " ";
-					// contactList += jsonObject.results[i].LastName + " ";
-					// contactList += jsonObject.results[i].Phone + " ";
-					// contactList += jsonObject.results[i].Email + " ";
-					// contactList += jsonObject.results[i].Address + " ";
-					// contactList += jsonObject.results[i].Notes + " ";
-					//contactList += jsonObject.results[i].TableID + " ";
-					
+					//this button displays the contact's name and takes you to the updateContact.html page
+					contactListTest += '<button onclick = "window.location.href = \'updateContact.html?contactid=' + contactID + '&userId=' + userId + '\'">' +contactFName + ' ' + contactLastName + '</button'; 
+				
+					 
+					// contactLastName= jsonObject.results[i].LastName;
+					// contactPhone = jsonObject.results[i].Phone;
+					// contactEmail = jsonObject.results[i].Email;
+					// contactAddress= jsonObject.results[i].Address;
+					// contactNotes = jsonObject.results[i].Notes;
+					 
+
+
+
+					//empty out the string variables used 
+					contactID = 0;
+					contactFName = "";
+					contactLastName = "";
 
 					if( i < jsonObject.results.length - 1 )
 					{
-						contactList += "<br />\r\n";
-						//alert(contactList);
+						// contactList += "<br />\r\n";
+						contactListTest += "<br />\r\n";
+						
 					}
 				}
 
-				// contactFName = jsonObject.results[0].FirstName;
-				// contactLastName = jsonObject.results[0].LastName;
-				// contactPhone = jsonObject.results[0].Phone;
-				// contactEmail = jsonObject.results[0].Email;
-				// contactAddress = jsonObject.results[0].Address;
-				// contactNotes = jsonObject.results[0].Notes;
-				// contactID = jsonObject.results[0].TableID;
-				
+				// alert(userId);
+
+			
 				
 
 				
@@ -332,7 +314,8 @@ function searchContact()
 
 
 }
-// //this function stores the information of a contact on click
+// //this function stores contactID and userID from the URL from Search on the updateContact page and displays the contact info selected
+//works!!
 function getContactInfo(){
 	
 	
@@ -341,20 +324,111 @@ function getContactInfo(){
 
 	const urlParams = new URLSearchParams(queryString);
 
-	const product = urlParams.get('contactid');
-	console.log(product);
+	contactID = urlParams.get('contactid');
+	//alert(contactID);
+	console.log(contactID);
 
-	const newUser = urlParams.get('contactFName');
-	console.log(newUser);
+	userId = urlParams.get('userId');
+	//alert(userId);
+	console.log(userId);
+
+	//this code should call the new API and display the info that's returned 
 	
-	// contactFName = sessionStorage.getItem("contactFName");
-	// contactLastName = sessionStorage.getItem("contactLastName");
-	// contactPhone = sessionStorage.getItem("contactPhone");
-	// contactEmail = sessionStorage.getItem("contactEmail");
-	// contactAddress = sessionStorage.getItem("contactAddress");
-	// contactNotes = sessionStorage.getItem("contactNotes");
-	// contactID = sessionStorage.getItem("contactID");
-	// console.log(contactFName, contactLastName,contactPhone, contactEmail, contactAddress, contactNotes, contactID);
+	
+	let contactListUpdate = "";// TESTING THIS!!
+
+
+	let tmp = {ContactID: contactID, UserID: userId};
+	
+	let jsonPayload = JSON.stringify( tmp );
+	//alert(jsonPayload);
+	let url = urlBase + '/GetInfoByID.' + extension;
+
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				
+				document.getElementById("contactUpdateResults").innerHTML = "Here you can edit your contact!";
+				let jsonObject = JSON.parse( xhr.responseText );
+				
+				//alert(jsonPayload);
+				//alert(jsonObject.FirstName);
+				
+				
+					
+					
+					//contactListTest += "<button>" + jsonObject.results[i].FirstName + " " + jsonObject.results[i].LastName + "</button>";
+					
+					//this line creates a button that displays the first and last name of the contact and takes you to the update contact page
+					//this line also stores the contactID and userid in the url that will later be parsed in the update contact page
+
+					
+					contactFName = jsonObject.FirstName;
+					contactLastName= jsonObject.LastName;
+					contactPhone = jsonObject.Phone;
+					contactEmail = jsonObject.Email;
+					contactAddress= jsonObject.Address;
+					contactNotes = jsonObject.Notes;
+					//alert(contactFName);
+					contactListUpdate += '<label for="contactFName"> <b>First Name</b> </label><br />';
+					contactListUpdate += '<p>' + contactFName + '</p>';
+					contactListUpdate += '<label for="contactLName"> <b>Last Name</b> </label><br />';
+					contactListUpdate += '<p>' + contactLastName + '</p>';
+					contactListUpdate += '<label for="contactPh"> <b>Phone Number</b> </label><br />';
+					contactListUpdate += '<p>' + contactPhone + '</p>';
+					contactListUpdate += '<label for="contactEmail"> <b>Email</b> </label><br />';
+					contactListUpdate += '<p>' + contactEmail + '</p>';
+					contactListUpdate += '<label for="contactAddress"> <b>Address</b> </label><br />';
+					contactListUpdate += '<p>' + contactAddress + '</p>';
+					contactListUpdate += '<label for="contactNotes"> <b>Notes</b> </label><br />';
+					contactListUpdate += '<p>' + contactNotes + '</p>';
+
+					contactListUpdate += '<button onclick = "window.location.href = \'anotherupdateContact.html?contactid=' + contactID + '&userId=' + userId + '\'"> Update Contact</button';
+					// contactListUpdate += '<label for="contactFName"> <b>First Name</b> </label><br />';
+					// contactListUpdate += '<input type="text" id="contactFNameup" placeholder=" ' + contactFName + '" /><br />';
+					// contactListUpdate += '<label for="contactLName"> <b>Last Name</b> </label><br />';
+					// contactListUpdate += '<input type="text" id="contactLNameup" placeholder=" ' + contactLastName + '" /><br />';
+					// contactListUpdate += '<label for="contactPh"> <b>Phone Number</b> </label><br />';
+					// contactListUpdate += '<input type="text" id="contactPhonup" placeholder=" ' + contactPhone + '" /><br />';
+					// contactListUpdate += '<label for="contactEmail"> <b>Email</b> </label><br />';
+					// contactListUpdate += '<input type="text" id="contactEmailup" placeholder=" ' + contactEmail + '" /><br />';
+					// contactListUpdate += '<label for="contactAddress"> <b>Address</b> </label><br />';
+					// contactListUpdate += '<input type="text" id="contactAddressup" placeholder=" ' + contactAddress + '" /><br />';
+					// contactListUpdate += '<label for="contactNotes"> <b>Notes</b> </label><br />';
+					// contactListUpdate += '<input type="text" id="contactNotesup" placeholder=" ' + contactNotes + '" /><br />';
+				
+
+					//empty out the string variables used 
+					//contactID = 0;
+					//contactFName = "";
+					//contactLastName = "";
+
+
+			
+				
+
+				
+				//document.getElementsByTagName("p")[0].innerHTML = contactList;
+				document.getElementsByTagName("ul")[0].innerHTML = contactListUpdate; //TESTING THIS!!!
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactUpdateResults").innerHTML = err.message;
+	}
+
+
 
 }
 //works!!
@@ -395,21 +469,50 @@ function doCreateUser(){
 	window.location.href = "contact.html";
 
 }
+//gets userid and contactid from the update contact page to go to anotherupdateContact page
+function getUserandContactID(){
+	const queryString = window.location.search;
+	console.log(queryString);
 
+	const urlParams = new URLSearchParams(queryString);
+
+	contactID = urlParams.get('contactid');
+	alert(contactID);
+	console.log(contactID);
+
+	userId = urlParams.get('userId');
+	//alert(userId);
+	console.log(userId);
+
+	alert(userId);
+	alert(contactID);
+
+}
+//Works!!
 function updateContact(){
 
-	//php: UserID, ContactID
+	
 	
 	//userId = 1;
-	let srch = document.getElementById("firstNametoUpdate").value;
-	alert(srch);
+	alert(userId);
+	alert(contactID);
+	//alert(contactFName);
+	//alert(contactLastName);
+	let FirstName = document.getElementById("firstName").value;
+	let LastName = document.getElementById("lastName").value;
+	let Phone = document.getElementById("phoneNumber").value;
+	let Email = document.getElementById("emailVal").value;
+	let Address = document.getElementById("address").value;
+	let Notes = document.getElementById("notes").value;
+	// let srch = document.getElementById("firstNametoUpdate").value;
+	// alert(srch);
 	
-	document.getElementById("contactUpdateResult").innerHTML = "";
+	 document.getElementById("contactUpdateResult").innerHTML = "";
 
 	
 
-	let tmp = {ContactID: contactID, UserID: userId, NewFirstName: srch, NewLastName: contactLastName, NewPhone: contactPhone, NewEmail: contactEmail, 
-		NewAddress: contactAddress, NewNotes: contactNotes };
+	let tmp = {ContactID: contactID, UserID: userId, NewFirstName: FirstName, NewLastName: LastName, NewPhone: Phone, NewEmail: Email, 
+		NewAddress: Address, NewNotes: Notes };
 	let jsonPayload = JSON.stringify(tmp);
 	alert(jsonPayload);
 
@@ -437,45 +540,43 @@ function updateContact(){
 
 }
 
+//works!!
 function deleteContact(){
 
-	//TableID = $inData["ContactID"];
 	
+	if (confirm("Are you sure you want to delete this contact?")) {
+		
+		
 
-	let srch = document.getElementById("delContactId").value;
-	alert(srch);
-	
-	//document.getElementById("contactDeleteResult").innerHTML = "";
+		let tmp = {ContactID: contactID, UserID: userId};
+		//alert(tmp);
+		let jsonPayload = JSON.stringify(tmp);
+		//alert(tmp);
+		//alert(jsonPayload);
 
-	
-
-	let tmp = {ContactID: srch, UserID: userId};
-	alert(tmp);
-	let jsonPayload = JSON.stringify(tmp);
-	//alert(tmp);
-	alert(jsonPayload);
-
-	let url = urlBase + '/DeleteContact.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
+		let url = urlBase + '/DeleteContact.' + extension;
+		
+		let xhr = new XMLHttpRequest();
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+		try
 		{
-			if (this.readyState == 4 && this.status == 200) 
+			xhr.onreadystatechange = function() 
 			{
-				document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted!";
-			}
-		};
+				if (this.readyState == 4 && this.status == 200) 
+				{
+					document.getElementById("contactDeleteResult").innerHTML = "Contact has been deleted!";
+				}
+			};
 
-		xhr.send(jsonPayload);
-		alert(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("contactDeleteResult").innerHTML = err.message;
+			xhr.send(jsonPayload);
+			//alert(jsonPayload);
+		}
+		catch(err)
+		{
+			document.getElementById("contactDeleteResult").innerHTML = err.message;
+		}
 	}
 
+	
 }

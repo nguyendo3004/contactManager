@@ -58,7 +58,7 @@
       <br /><br />
 
       <!--To update contact dummy code-->
-
+      <!--
       <input
         type="text"
         id="firstNametoUpdate"
@@ -74,48 +74,28 @@
         onclick="updateContact();"
       >
         update Contact
-      </button>
+      </button> -->
 
-      <!--NEED TO FIX-->
-      <!--delete text field to add contact and just leave button-->
       <!--once user clicks on button, use javascript to go another page/button to add a contact-->
-      <input
-        type="text"
-        id="firstName"
-        placeholder="First Name of Contact To Add"
-      />
-      <input
-        type="text"
-        id="lastName"
-        placeholder="Last Name of Contact To Add"
-      />
-      <input
-        type="text"
-        id="phoneNumber"
-        placeholder="phonenumber of Contact To Add"
-      />
-      <input type="text" id="emailVal" placeholder="email of Contact To Add" />
-      <input type="text" id="address" placeholder="Address of Contact To Add" />
-      <input type="text" id="notes" placeholder="Notes of Contact To Add" />
-
       <button
         type="button"
-        id="addContactButton"
+        id="createContactButton"
         class="buttons"
-        onclick="addContact();"
+        onclick="window.location.href = 'AddContact.html'"
       >
-        Add Contact</button
-      ><br />
-      <span id="contactAddResult"></span>
+        Add Contact
+      </button>
+      <span id="newContactResult"></span>
 
       <!--Delete Contact-->
+      <!--
       <input
         type="text"
         id="delContactId"
         placeholder="ID of Contact to Delete"
-      />
+      />-->
 
-      <button
+      <!-- <button
         type="button"
         id="DeleteContactButton"
         class="buttons"
@@ -123,7 +103,7 @@
       >
         Delete Contact</button
       ><br />
-      <span id="contactDeleteResult"></span>
+      <span id="contactDeleteResult"></span>-->
     </div>
   </body>
 </html>

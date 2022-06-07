@@ -1,8 +1,12 @@
+<!-- this page works and does not need to be modified-->
 <html>
   <head>
     <title>Contact Manager</title>
+    <meta name="viewport" content="with-device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="js/md5.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,21 +23,14 @@
         false
       );
     </script>
-    <!--This gets the contact's info from the URL-->
-    <script type="text/javascript">
-      getContactInfo();
-    </script>
-
-    <!--Enter a script tag that will call a function that will use the new API to get all contact info to edit-->
   </head>
   <body>
-    <!--<h1 id="title">Contact Manager</h1>-->
+    <!--This page creates a new contact for the user-->
     <center>Contact Manager</center>
 
     <!--does log out-->
     <div id="loggedInDiv">
       <span id="userName"></span><br />
-
       <button
         type="button"
         id="logoutButton"
@@ -44,38 +41,23 @@
       </button>
     </div>
 
-    <!--does search for contact, add contact, need to add update contact, and delete contact-->
     <div id="accessUIDiv">
-      <br />
-
-      <!--To update contact dummy code-->
-
-      <!--Displaying information of the contact-->
-      <span id="contactUpdateResults"></span>
-
-      <ul id="contactUpdateResult"></ul>
-      <br /><br />
-
-      <!--<button
-        type="button"
-        id="updateContactButton"
-        class="buttons"
-        onclick="window.location.href = 'anotherupdateContact.html'"
-      >
-        Update Contact
-      </button>-->
-
-      <!--Delete Contact-->
+      <input type="text" id="firstName" placeholder="Contact First Name" />
+      <input type="text" id="lastName" placeholder="Contact Last Name" />
+      <input type="text" id="phoneNumber" placeholder="Contact Phone Number" />
+      <input type="text" id="emailVal" placeholder="Contact Email" />
+      <input type="text" id="address" placeholder="Contact Address" />
+      <input type="text" id="notes" placeholder="Notes" />
 
       <button
         type="button"
-        id="DeleteContactButton"
+        id="addContactButton"
         class="buttons"
-        onclick="deleteContact();"
+        onclick="addContact();"
       >
-        Delete Contact</button
+        Add Contact</button
       ><br />
-      <span id="contactDeleteResult"></span>
+      <span id="contactAddResult"></span>
     </div>
   </body>
 </html>
