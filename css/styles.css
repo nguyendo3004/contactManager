@@ -25,7 +25,7 @@ body
 /*This is for the Contact Manager title*/
 center{
     font-size: 50px;
-    color: #fff;
+    color: black;
     padding: 0%;
 
 }
@@ -39,14 +39,11 @@ center{
     width: 70%;
     margin-left: 15%;
     padding: 25px;
-    background-color: rgb(196, 196, 246);
-    border: 5px red;
+    background-color: rgb(244, 183, 108);
+    color: black;
     border-radius: 30px;
 }
-#contactUpdateResult{
-    display: inline;
-    float: left;
-}
+
 
 label{
     text-align: center;
@@ -70,7 +67,7 @@ label{
     width: 70%;
     margin-left: 15%;
     padding: 25px;
-    background-color: rgb(196, 196, 246);
+    background-color: rgb(244, 183, 108);
     border-radius: 30px;
 }
 
@@ -85,7 +82,7 @@ label{
 
 /*This might affect the buttons generated after search*/
 ul{
-    float: left;
+    /*float: left;*/
     list-style: none;
     border-radius: 25px;
     
@@ -156,7 +153,7 @@ input[type="text"],input[type="password"]{
     margin-left: 5%;
     margin-bottom: 2%;
     
-    color: #95060a;
+    color: black;
 }
 
 #loginResult{
@@ -167,7 +164,7 @@ input[type="text"],input[type="password"]{
     margin-left: 5%;
     margin-bottom: 2%;
     
-    color: #95060a;
+    color: black;
 }
 #newAccountResult{
     display: inline-block;
@@ -176,8 +173,8 @@ input[type="text"],input[type="password"]{
     text-align: center;
     margin-left: 5%;
     margin-bottom: 2%;
-    
-    color: #95060a;
+    color: black;
+    /*color: #95060a;*/
 
 }
 
@@ -211,7 +208,7 @@ select{
     margin-top: 2%;
     margin-bottom: 1%;
     
-    color: #95060a;
+    color: black;
     
 }
 
@@ -224,5 +221,26 @@ select{
     margin-top: 2%;
     margin-bottom: 1%;
     
-    color: #95060a;
+    color: black;
+}
+
+#contactUpdateResult{
+
+  
+    margin-top: 2%;
+    margin-bottom: 1%;
+    
+    
+    text-align: left;
+    
+
+}
+
+#updateButton{
+
+    font-size: 20px;
+    border-radius: 25px;
+    width: 50%;
+    margin-left: 25%;
+
 }

@@ -28,6 +28,12 @@ function doLogin()
 	let Login = document.getElementById("loginName").value;
 	
 	let Password = document.getElementById("loginPassword").value;
+	
+	//doesn't allow a user to input a empty string 
+	if(Login == "" || Password == ""){
+		document.getElementById("loginResult").innerHTML = "Please enter a valid Username and Password";
+		return;
+	}
 
 //	var hash = md5( password );
 	
@@ -58,7 +64,7 @@ function doLogin()
 				//alert(userId);
 				
 
-				if( userId == undefined )
+				if( userId == undefined)
 				{		
 					document.getElementById("loginResult").innerHTML = "Incorrect Username or Password";
 					return;
@@ -166,7 +172,7 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("userName").innerHTML = "Logged in";
 	}
 }
 //works!!
@@ -265,12 +271,14 @@ function searchContact()
 					contactID = jsonObject.results[i].TableID;
 					contactFName = jsonObject.results[i].FirstName;
 					contactLastName= jsonObject.results[i].LastName;
-					//contactAddress = jsonObject.results[i].Address;
-					//contactEmail = jsonObject.resultis[i].Email;
-					//contactPhone = jsonObject.results
+					contactAddress = jsonObject.results[i].Address;
+					contactEmail = jsonObject.results[i].Email;
+					contactPhone = jsonObject.results[i].Phone;
+					contactNotes = jsonObject.results[i].Notes;
+
 
 					//this button displays the contact's name and takes you to the updateContact.html page
-					contactListTest += '<button onclick = "window.location.href = \'updateContact.html?contactid=' + contactID + '&userId=' + userId + '\'">' +contactFName + ' ' + contactLastName + '</button'; 
+					contactListTest += '<button onclick = "window.location.href = \'updateContact.html?contactid=' + contactID + '&userId=' + userId + '&FirstName=' + contactFName + '&LastName=' + contactLastName + '&Phone=' + contactPhone + '&Email=' + contactEmail + '&Address=' + contactAddress + '&Notes=' + contactNotes +  '\'">' +contactFName + ' ' + contactLastName + '</button'; 
 				
 					 
 					// contactLastName= jsonObject.results[i].LastName;
@@ -332,6 +340,13 @@ function getContactInfo(){
 	//alert(userId);
 	console.log(userId);
 
+	contactFName = urlParams.get('FirstName');
+	contactLastName= urlParams.get('LastName');
+	contactPhone = urlParams.get('Phone');
+	contactEmail = urlParams.get('Email');
+	contactAddress= urlParams.get('Address');
+	contactNotes = urlParams.get('Notes');
+
 	//this code should call the new API and display the info that's returned 
 	
 	
@@ -392,7 +407,7 @@ function getContactInfo(){
 					contactListUpdate += '<label for="contactNotes"> <b>Notes</b> </label><br />';
 					contactListUpdate += '<p>' + contactNotes + '</p>';
 
-					contactListUpdate += '<button onclick = "window.location.href = \'anotherupdateContact.html?contactid=' + contactID + '&userId=' + userId + '\'"> Update Contact</button';
+					contactListUpdate += '<button id="updateButton" onclick = "window.location.href = \'anotherupdateContact.html?contactid=' + contactID + '&userId=' + userId +  '\'"> Update Contact</button';
 					// contactListUpdate += '<label for="contactFName"> <b>First Name</b> </label><br />';
 					// contactListUpdate += '<input type="text" id="contactFNameup" placeholder=" ' + contactFName + '" /><br />';
 					// contactListUpdate += '<label for="contactLName"> <b>Last Name</b> </label><br />';
@@ -470,6 +485,7 @@ function doCreateUser(){
 
 }
 //gets userid and contactid from the update contact page to go to anotherupdateContact page
+///in the anotherupdateContact page I want to display the contact info on top of the input text entry!
 function getUserandContactID(){
 	const queryString = window.location.search;
 	console.log(queryString);
@@ -477,15 +493,17 @@ function getUserandContactID(){
 	const urlParams = new URLSearchParams(queryString);
 
 	contactID = urlParams.get('contactid');
-	alert(contactID);
+	//alert(contactID);
 	console.log(contactID);
 
 	userId = urlParams.get('userId');
 	//alert(userId);
 	console.log(userId);
 
-	alert(userId);
-	alert(contactID);
+	
+
+	//alert(userId);
+	//alert(contactID);
 
 }
 //Works!!
@@ -494,10 +512,11 @@ function updateContact(){
 	
 	
 	//userId = 1;
-	alert(userId);
-	alert(contactID);
+	//alert(userId);
+	//alert(contactID);
 	//alert(contactFName);
 	//alert(contactLastName);
+	
 	let FirstName = document.getElementById("firstName").value;
 	let LastName = document.getElementById("lastName").value;
 	let Phone = document.getElementById("phoneNumber").value;
